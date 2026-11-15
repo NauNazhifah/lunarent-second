@@ -62,6 +62,14 @@ node --env-file=.env.local scripts/smoke.mjs   # server harus jalan
 node scripts/shots.mjs                          # screenshot 375/1440
 ```
 
+## Deployment produksi
+
+- URL: https://lunarent-second.vercel.app
+- Project Vercel: `nazhi/lunarent-second` (framework Next.js, region default)
+- Env production/preview/development: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `SESSION_SECRET` (mirip `.env.local`)
+- Verifikasi prod: landing 200, login demo 200, `GET /api/books` 200 (total 8), `POST /api/books` 201, `DELETE` 200, `/dashboard` tanpa sesi menampilkan halaman login
+- Auto-deploy GitHub belum aktif: hubungkan repo lewat Vercel Dashboard → Settings → Git, atau `vercel git connect`
+
 ## Catatan / hutang teknis
 
 - Perbaikan bug: kegagalan query sesi ke MySQL dulu disamarkan menjadi 401 ("belum login"). Sekarang `SessionUnavailableError` → HTTP 503, dan 401 hanya untuk sesi yang benar-benar tidak valid. Pool diberi `enableKeepAlive` + `idleTimeout` agar koneksi idle ke Aiven tidak mati diam-diam.
