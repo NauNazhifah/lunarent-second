@@ -41,9 +41,6 @@ export default async function LandingPage() {
               I already have one
             </Link>
           </div>
-          <p className="mt-4 text-sm text-ink/60">
-            Demo account: <span className="font-semibold">demo@mylunalist.test</span> / demo1234
-          </p>
         </div>
 
         <div className="relative">
