@@ -68,7 +68,7 @@ node scripts/shots.mjs                          # screenshot 375/1440
 - Project Vercel: `nazhi/lunarent-second` (framework Next.js, region default)
 - Env production/preview/development: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `SESSION_SECRET` (mirip `.env.local`)
 - Verifikasi prod: landing 200, login demo 200, `GET /api/books` 200 (total 8), `POST /api/books` 201, `DELETE` 200, `/dashboard` tanpa sesi menampilkan halaman login
-- Auto-deploy GitHub belum aktif: hubungkan repo lewat Vercel Dashboard → Settings → Git, atau `vercel git connect`
+- Auto-deploy GitHub **aktif**: `NauNazhifah/lunarent-second` terhubung ke project Vercel (dicek dengan `vercel git connect` → "already connected"). Setiap push ke `main` memicu deployment production.
 
 ## Catatan / hutang teknis
 
