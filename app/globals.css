@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bistre: #210100;
+  --color-goldfinch: #e6a341;
+  --color-butter: #fece79;
+  --color-indian-red: #b14a36;
+  --color-garnet: #8c0902;
+  --color-parchment: #fbf1de;
+  --color-cream: #f6e5c6;
+  --color-ink: #2a120c;
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  --font-body: "Iowan Old Style", Georgia, "Times New Roman", serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(230, 163, 65, 0.16), transparent 45%),
+    radial-gradient(circle at 88% 4%, rgba(177, 74, 54, 0.12), transparent 42%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--color-butter);
+  color: var(--color-bistre);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-garnet);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  .rule-ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-indian-red);
+  }
+  .rule-ornament::before,
+  .rule-ornament::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    opacity: 0.5;
+  }
+
+  .ticket {
+    position: relative;
+    background: #fffaf0;
+    border: 1px solid rgba(42, 18, 12, 0.14);
+    box-shadow: 0 1px 0 rgba(42, 18, 12, 0.06), 0 12px 32px -24px rgba(33, 1, 0, 0.6);
+  }
+
+  .ticket-notch {
+    mask-image: radial-gradient(circle 8px at 0 50%, transparent 98%, #000 100%),
+      radial-gradient(circle 8px at 100% 50%, transparent 98%, #000 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+  }
+
+  .stripe-band {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--color-garnet) 0 8px,
+      var(--color-goldfinch) 8px 16px
+    );
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    transition: transform 120ms ease, background-color 120ms ease, color 120ms ease;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--color-garnet);
+    color: var(--color-parchment);
+  }
+  .btn-primary:hover {
+    background: var(--color-indian-red);
+  }
+  .btn-ghost {
+    background: transparent;
+    border-color: rgba(42, 18, 12, 0.3);
+    color: var(--color-ink);
+  }
+  .btn-ghost:hover {
+    background: rgba(254, 206, 121, 0.35);
+  }
+
+  .field {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    background: #fffdf7;
+    border: 1px solid rgba(42, 18, 12, 0.25);
+    color: var(--color-ink);
+    font-size: 0.95rem;
+  }
+  .field:focus {
+    border-color: var(--color-indian-red);
+  }
+  .label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-indian-red);
+  }
+}
